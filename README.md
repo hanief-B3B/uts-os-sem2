@@ -1,8 +1,9 @@
-# Ringkasan Sistem Operasi
 
-## 1. Installasi Ubuntu Server
+# 📘 Ringkasan Sistem Operasi
 
-📺 [Tonton Video di YouTube](https://youtu.be/q4Gn8AQwc98)
+## 1. Instalasi Ubuntu Server
+
+[![Tonton Video](https://img.youtube.com/vi/q4Gn8AQwc98/0.jpg)](https://youtu.be/q4Gn8AQwc98 "Tonton Video di YouTube")
 
 ---
 
@@ -16,28 +17,28 @@
 - Menyediakan mekanisme terkendali untuk mengakses perangkat I/O.
 - **Contoh:** Membaca data dari hard disk atau mengirim data ke printer.
 
-### Manipulasi File-System
+### Manipulasi Sistem Berkas
 - Membuat, menghapus, membaca, dan menulis file.
 - **Contoh:** Membuka dokumen atau menyimpan file ke direktori.
 
-### Komunikasi
-- Memfasilitasi pertukaran data antar proses, baik dalam satu komputer atau jaringan.
-- **Contoh:** Sinkronisasi data antara aplikasi client dan server.
+### Komunikasi Antar Proses
+- Memfasilitasi pertukaran data antar proses.
+- **Contoh:** Sinkronisasi antara aplikasi klien dan server.
 
-### Deteksi Error
-- Mendeteksi kesalahan hardware (misal: disk rusak) atau operasional (misal: pembagian oleh nol).
+### Deteksi Kesalahan
+- Mendeteksi error hardware atau kesalahan logika program.
 
 ### Proteksi
 - Mengontrol akses pengguna ke sumber daya sistem.
-- **Contoh:** Membatasi akses ke file sensitif.
+- **Contoh:** Membatasi akses ke file sistem penting.
 
-### Akunting
-- Mencatat penggunaan sumber daya untuk audit atau penagihan.
-- **Contoh:** Memonitor penggunaan CPU oleh tiap pengguna.
+### Akuntansi
+- Mencatat penggunaan sumber daya untuk audit.
+- **Contoh:** Memonitor penggunaan CPU oleh setiap user.
 
-### Diagram Status Proses
+---
 
-Diagram status proses menggambarkan perubahan keadaan sebuah proses selama eksekusi:
+## Diagram Status Proses
 
 ```mermaid
 stateDiagram-v2
@@ -48,103 +49,85 @@ stateDiagram-v2
     Waiting --> Ready
     Running --> Ready
     Running --> Terminated
+```
 
-#### Penjelasan Status:
-
-- **New:** Proses baru dibuat. Sistem operasi mengalokasikan memori dan tabel proses.
-- **Ready:** Proses siap dieksekusi, menunggu alokasi CPU.
-- **Running:** Proses sedang dijalankan oleh CPU. Hanya satu proses per inti CPU.
-- **Waiting:** Proses menunggu sumber daya eksternal.
-- **Terminated:** Proses selesai atau dihentikan.
-
-#### Transisi Status:
-
-- `New → Ready:` Proses masuk antrian scheduler.
-- `Ready → Running:` CPU menjalankan proses sesuai penjadwalan.
-- `Running → Ready:` Proses dipreempt karena interupsi.
-- `Running → Waiting:` Proses meminta sumber daya yang belum tersedia.
-- `Waiting → Ready:` Sumber daya tersedia, proses kembali ke scheduler.
-- `Running → Terminated:` Proses selesai atau dihentikan.
+**Penjelasan Status:**
+- **New:** Proses dibuat.
+- **Ready:** Proses siap dijalankan.
+- **Running:** Proses sedang dijalankan.
+- **Waiting:** Proses menunggu event/sumber daya.
+- **Terminated:** Proses selesai.
 
 ---
 
 ## 3. Usulan Sistem Operasi Server untuk Data Center
 
-### Rekomendasi OS:
+### Rekomendasi OS
 
 #### Linux (RHEL, CentOS, Ubuntu Server)
-- **Kelebihan:**
-  - Open-source, stabil, hemat sumber daya.
-  - Mendukung Docker, KVM.
-  - Kompatibel dengan aplikasi web dan database.
-- **Contoh Aplikasi:** Apache, PostgreSQL.
+- Open-source, hemat sumber daya.
+- Mendukung Docker dan KVM.
+- Cocok untuk aplikasi web dan database.
 
 #### Windows Server
-- **Kelebihan:**
-  - GUI intuitif.
-  - Integrasi dengan produk Microsoft (Active Directory, SQL Server).
-  - Cocok untuk lingkungan enterprise.
+- GUI intuitif.
+- Integrasi dengan Active Directory & SQL Server.
+- Cocok untuk lingkungan enterprise.
 
-### Aplikasi Penunjang:
+### Aplikasi Penunjang
 
-- **Virtualisasi/Container:**
-  - VMware vSphere, Kubernetes.
-- **Load Balancer:**
-  - Nginx, HAProxy.
-- **Monitoring:**
-  - Prometheus + Grafana, Zabbix.
-- **Database:**
-  - MySQL, MongoDB.
-- **Backup:**
-  - Bacula.
-- **Keamanan:**
-  - SELinux/AppArmor, iptables/ufw.
+- **Virtualisasi/Kontainer:** VMware vSphere, Kubernetes
+- **Load Balancer:** Nginx, HAProxy
+- **Monitoring:** Prometheus + Grafana, Zabbix
+- **Database:** MySQL, PostgreSQL, MongoDB
+- **Backup:** Bacula
+- **Keamanan:** SELinux, AppArmor, iptables, ufw
 
-**Pendapat:**  
-Prioritaskan Linux untuk efisiensi biaya. Gunakan Kubernetes dan monitoring otomatis untuk keandalan.
+**📌 Saran:**  
+Gunakan Linux untuk efisiensi dan fleksibilitas. Terapkan Kubernetes untuk orkestrasi kontainer dan Prometheus untuk monitoring otomatis.
 
 ---
 
-## 4. Proses vs Thread
+## 4. Perbedaan Proses dan Thread
 
-| Aspek        | Proses                                       | Thread                                  |
-|--------------|----------------------------------------------|------------------------------------------|
-| Definisi     | Instansi independen program.                 | Unit eksekusi dalam proses.             |
-| Sumber Daya  | Memiliki memori dan resource terpisah.       | Berbagi memori dan resource induk.      |
-| Overhead     | Tinggi (isolasi penuh).                      | Rendah (resource sharing).              |
-| Komunikasi   | IPC (pipes, sockets) kompleks.               | Langsung via shared memory.             |
-| Kegagalan    | Tidak memengaruhi proses lain.               | Dapat memengaruhi seluruh proses.       |
+| Aspek        | Proses                                      | Thread                                 |
+|--------------|---------------------------------------------|----------------------------------------|
+| Definisi     | Instansi independen dari program.           | Unit eksekusi dalam proses.            |
+| Sumber Daya  | Memiliki memori sendiri.                    | Berbagi memori dengan thread lain.     |
+| Overhead     | Tinggi.                                     | Rendah.                                |
+| Komunikasi   | Kompleks (IPC).                             | Mudah (memori bersama).                |
+| Kegagalan    | Terisolasi.                                 | Dapat memengaruhi proses induk.        |
 
-### Kelebihan Proses:
-- Isolasi, keamanan, stabilitas.
+### ✅ Kelebihan Proses
+- Isolasi baik, aman, stabil.
 
-### Kekurangan Proses:
-- Konsumsi memori tinggi, komunikasi lambat.
+### ❌ Kekurangan Proses
+- Konsumsi sumber daya tinggi.
 
-### Kelebihan Thread:
-- Efisiensi, responsif.
+### ✅ Kelebihan Thread
+- Ringan, responsif.
 
-### Kekurangan Thread:
-- Deadlock, risiko keamanan.
+### ❌ Kekurangan Thread
+- Rentan terhadap deadlock & race condition.
+
+---
+
+## 5. Komponen Utama Sistem Operasi & Jenis Kernel
+
+### Komponen Utama
+
+- **Kernel:** Mengelola CPU, memori, dan perangkat keras.
+- **Shell:** Antarmuka pengguna (CLI/GUI).
+- **System Utilities:** Perintah dan alat bantu (contoh: `ls`, `ping`).
+
+### Jenis Kernel
+
+| Jenis         | Ciri Khas                                | Kelebihan            | Kekurangan                |
+|---------------|-------------------------------------------|----------------------|---------------------------|
+| Monolitik     | Semua layanan di kernel space.            | Performa tinggi      | Rentan crash sistem       |
+| Mikrokernel    | Hanya layanan dasar di kernel space.      | Modular, stabil       | Overhead komunikasi       |
+| Hybrid        | Gabungan keduanya.                        | Seimbang performa     | Kompleksitas tinggi       |
 
 ---
 
-## 5. Tiga Komponen Utama Sistem Operasi dan Jenis Kernel
-
-### Tiga Komponen Utama:
-
-- **Kernel:** Inti OS, mengelola CPU, memori, perangkat.
-- **Shell/User Interface:** CLI atau GUI untuk interaksi pengguna.
-  - Contoh: Bash (Linux), Command Prompt (Windows).
-- **System Utilities:** Tools bantu manajemen file, jaringan, keamanan.
-  - Contoh: `ls`, `ping`.
-
-### Jenis Kernel:
-
-| Jenis Kernel | Ciri Khas | Kelebihan | Kekurangan |
-|--------------|-----------|-----------|------------|
-| **Monolitik** (Linux) | Semua layanan di kernel space. | Performa tinggi. | Risiko crash tinggi. |
-| **Mikrokernel** (QNX) | Fungsi dasar saja di kernel space. | Stabil, modular. | Overhead komunikasi tinggi. |
-| **Hybrid** (Windows NT, macOS) | Kombinasi keduanya. | Seimbang antara performa & stabilitas. | Kompleksitas lebih tinggi. |
-
----
+> 🔖 **Catatan:** File ini disusun sebagai ringkasan pembelajaran sistem operasi untuk keperluan kuliah atau dokumentasi teknis.
