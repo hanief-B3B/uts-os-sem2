@@ -1,9 +1,9 @@
 
-# 📘 Ringkasan Sistem Operasi
+# 📘 Jawaban Soal UTS
 
 ## 1. Instalasi Ubuntu Server
 
-[![Tonton Video](https://img.youtube.com/vi/q4Gn8AQwc98/0.jpg)](https://youtu.be/q4Gn8AQwc98 "Tonton Video di YouTube")
+[![Tonton Video](https://youtu.be/q4Gn8AQwc98 "Tonton Video di YouTube")
 
 ---
 
@@ -83,7 +83,7 @@ stateDiagram-v2
 - **Backup:** Bacula
 - **Keamanan:** SELinux, AppArmor, iptables, ufw
 
-**📌 Saran:**  
+** Saran:**  
 Gunakan Linux untuk efisiensi dan fleksibilitas. Terapkan Kubernetes untuk orkestrasi kontainer dan Prometheus untuk monitoring otomatis.
 
 ---
@@ -98,16 +98,16 @@ Gunakan Linux untuk efisiensi dan fleksibilitas. Terapkan Kubernetes untuk orkes
 | Komunikasi   | Kompleks (IPC).                             | Mudah (memori bersama).                |
 | Kegagalan    | Terisolasi.                                 | Dapat memengaruhi proses induk.        |
 
-### ✅ Kelebihan Proses
+###  Kelebihan Proses
 - Isolasi baik, aman, stabil.
 
-### ❌ Kekurangan Proses
+###  Kekurangan Proses
 - Konsumsi sumber daya tinggi.
 
-### ✅ Kelebihan Thread
+###  Kelebihan Thread
 - Ringan, responsif.
 
-### ❌ Kekurangan Thread
+###  Kekurangan Thread
 - Rentan terhadap deadlock & race condition.
 
 ---
@@ -129,5 +129,3 @@ Gunakan Linux untuk efisiensi dan fleksibilitas. Terapkan Kubernetes untuk orkes
 | Hybrid        | Gabungan keduanya.                        | Seimbang performa     | Kompleksitas tinggi       |
 
 ---
-
-> 🔖 **Catatan:** File ini disusun sebagai ringkasan pembelajaran sistem operasi untuk keperluan kuliah atau dokumentasi teknis.
