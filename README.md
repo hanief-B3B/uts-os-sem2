@@ -3,7 +3,7 @@
 
 ## 1. Instalasi Ubuntu Server
 
-[![Tonton Video](https://youtu.be/q4Gn8AQwc98 "Tonton Video di YouTube")
+[Tonton Video](https://youtu.be/q4Gn8AQwc98 "Tonton Video di YouTube")
 
 ---
 
